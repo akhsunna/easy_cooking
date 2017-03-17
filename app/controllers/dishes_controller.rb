@@ -5,6 +5,10 @@ class DishesController < ApplicationController
   def index
     dishes = Dish.all
 
+    filtering_params(params).each do |key, value|
+      dishes = dishes.public_send(key, value) if value.present?
+    end
+
     if params[:page].present?
       current_page = params[:page].to_i
       dishes = paginate dishes, per_page: PER_PAGE
@@ -18,5 +22,14 @@ class DishesController < ApplicationController
       ),
       next_page: next_page
     }
+  end
+
+  private
+
+  def filtering_params(params)
+    params.slice(
+      :order_by,
+      :by_categories
+    )
   end
 end
