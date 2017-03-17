@@ -8,4 +8,10 @@ class Dish < ApplicationRecord
                         thumb: '100x100>'
                     }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
+
+  # scope :by_category, -> (category_ids) {
+  #   includes(:categories)
+  #     .where(categories: { id: category_ids })
+  # }
+  # scope :sort_by, -> (column) {order(column)}
 end

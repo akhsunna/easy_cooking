@@ -25,4 +25,7 @@ gem 'paperclip', '~> 5.0.0'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'rails_admin'
 
+gem 'kaminari'
+gem 'api-pagination'
+
 ruby '2.3.3'
