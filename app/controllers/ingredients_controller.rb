@@ -1,6 +1,6 @@
 class IngredientsController < ApplicationController
   def index
-    ingredients = Dish.all
+    ingredients = Ingredient.all
     ingredients_count = ingredients.count
 
     render json: {
