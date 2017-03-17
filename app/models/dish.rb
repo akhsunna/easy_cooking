@@ -1,5 +1,6 @@
 class Dish < ApplicationRecord
   has_many :dish_ingredients
+  has_and_belongs_to_many :categories
 
   has_attached_file :image,
                     styles: {
