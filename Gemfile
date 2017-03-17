@@ -24,3 +24,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'paperclip', '~> 5.0.0'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'rails_admin'
+
+ruby '2.3.3'
