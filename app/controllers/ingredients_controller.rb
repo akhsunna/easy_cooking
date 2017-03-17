@@ -12,7 +12,7 @@ class IngredientsController < ApplicationController
     end
 
     render json: {
-      dishes: ActiveModel::Serializer::CollectionSerializer.new(
+      data: ActiveModel::Serializer::CollectionSerializer.new(
         ingredients,
         each_serializer: IngredientSerializer
       ),

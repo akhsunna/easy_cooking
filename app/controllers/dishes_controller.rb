@@ -16,7 +16,7 @@ class DishesController < ApplicationController
     end
 
     render json: {
-      dishes: ActiveModel::Serializer::CollectionSerializer.new(
+      data: ActiveModel::Serializer::CollectionSerializer.new(
         dishes,
         each_serializer: DishSerializer
       ),
