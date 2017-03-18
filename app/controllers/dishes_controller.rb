@@ -34,6 +34,11 @@ class DishesController < ApplicationController
     }
   end
 
+  def show
+    dish = Dish.find(params[:id])
+    render json: DishSerializer.new(dish).to_json
+  end
+
   private
 
   def filtering_params(params)
