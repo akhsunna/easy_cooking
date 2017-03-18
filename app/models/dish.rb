@@ -13,5 +13,9 @@ class Dish < ApplicationRecord
     includes(:categories)
       .where(categories: { id: category_ids })
   }
+  scope :by_ingredients, -> (ingredients_ids) {
+    includes(:dish_ingredients)
+      .where(dish_ingredients: { ingredient_id: ingredients_ids })
+  }
   scope :order_by, -> (column) {order(column)}
 end
