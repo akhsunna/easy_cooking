@@ -40,7 +40,8 @@ class DishesController < ApplicationController
     params.slice(
       :order_by,
       :by_category,
-      :by_ingredients
+      :by_ingredients,
+      :by_name
     )
   end
 end

@@ -5,6 +5,10 @@ class IngredientsController < ApplicationController
   def index
     ingredients = Ingredient.order_by_name
 
+    filtering_params(params).each do |key, value|
+      ingredients = ingredients.public_send(key, value) if value.present?
+    end
+
     if params[:page].present?
       current_page = params[:page].to_i
       ingredients = paginate ingredients, per_page: PER_PAGE
@@ -18,5 +22,11 @@ class IngredientsController < ApplicationController
       ),
       next_page: next_page
     }
+  end
+
+  private
+
+  def filtering_params(params)
+    params.slice(:by_name)
   end
 end

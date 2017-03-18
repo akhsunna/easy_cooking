@@ -17,6 +17,7 @@ class Dish < ApplicationRecord
     includes(:dish_ingredients)
       .where(dish_ingredients: { ingredient_id: ingredients_ids })
   }
+  scope :by_name, -> (value) { where('dishes.name ILIKE ?', "%#{value}%") }
   scope :order_by, -> (column) {order(column)}
   scope :order_by_name, -> {order(:name)}
 end
