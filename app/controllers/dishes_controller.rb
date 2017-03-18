@@ -3,7 +3,7 @@ class DishesController < ApplicationController
   PER_PAGE = 15
 
   def index
-    dishes = Dish.all
+    dishes = Dish.order_by_name
 
     filtering_params(params).each do |key, value|
       dishes = dishes.public_send(key, value) if value.present?

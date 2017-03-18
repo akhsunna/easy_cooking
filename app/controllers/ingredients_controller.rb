@@ -3,7 +3,7 @@ class IngredientsController < ApplicationController
   PER_PAGE = 25
 
   def index
-    ingredients = Ingredient.all
+    ingredients = Ingredient.order_by_name
 
     if params[:page].present?
       current_page = params[:page].to_i

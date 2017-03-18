@@ -18,4 +18,5 @@ class Dish < ApplicationRecord
       .where(dish_ingredients: { ingredient_id: ingredients_ids })
   }
   scope :order_by, -> (column) {order(column)}
+  scope :order_by_name, -> {order(:name)}
 end
