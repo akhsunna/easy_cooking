@@ -3,11 +3,17 @@ class DishesController < ApplicationController
   PER_PAGE = 15
 
   def index
-    dishes = Dish.order_by_name
+    dishes = Dish.all
 
     filtering_params(params).each do |key, value|
       dishes = dishes.public_send(key, value) if value.present?
     end
+
+    if params[:order_by].blank?
+      dishes = dishes.order_by_name
+    end
+
+    puts 'R'*100
 
     if params[:by_ingredients].present?
       dishes = dishes.reject do |dish|
