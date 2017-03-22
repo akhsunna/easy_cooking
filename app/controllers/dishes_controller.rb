@@ -13,18 +13,6 @@ class DishesController < ApplicationController
       dishes = dishes.order_by_name
     end
 
-    puts 'R'*100
-
-    if params[:by_ingredients].present?
-      dishes = dishes.reject do |dish|
-        res = false
-        params[:by_ingredients].each do |ingredient_id|
-          res = true unless dish.dish_ingredients.pluck(:ingredient_id).include?(ingredient_id.to_i)
-        end
-        res
-      end
-    end
-
     if params[:page].present?
       current_page = params[:page].to_i
       dishes = paginate dishes, per_page: PER_PAGE
