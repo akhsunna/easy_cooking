@@ -13,10 +13,12 @@ class DishesController < ApplicationController
       dishes = dishes.order_by_name
     end
 
+    dc = dishes.count
+
     if params[:page].present?
       current_page = params[:page].to_i
       dishes = paginate dishes, per_page: PER_PAGE
-      next_page = current_page * PER_PAGE >= dishes.count ? current_page : current_page + 1
+      next_page = current_page * PER_PAGE >= dc ? current_page : current_page + 1
     end
 
     render json: {
